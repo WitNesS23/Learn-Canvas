@@ -13,11 +13,11 @@
 
 ### 1. 标签与特性
 
-`
+```html
 <canvas id="canvas" width="1000" height="500">
 	当前浏览器不支持Canvas（优雅降级）
 </canvas>
-`
+```
 
 这样就是很常见的使用canvas标签的例子，其中比较重要的知识点如下:
 
@@ -29,13 +29,13 @@
 
 前面导语就有提到，其实真正呈现页面、带来惊艳效果的背后功臣是JavaScript。下面简单说说使用JavaScript初始化绘制对象的操作。
 
-`
+```javascript
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 
 canvas.width = 1024;
 canvas.height = 768;
-`
+```
 
 1. 第一行代码很简单，就是取得canvas的DOM对象；
 2. 第二行代码，官方术语的解释就是 **得到绘图的上下文环境**，这是真实的绘制所需要的接口，有了这个对象，就可以进行真实的绘制；
