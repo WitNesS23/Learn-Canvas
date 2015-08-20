@@ -54,7 +54,7 @@ canvas.height = 768;
 context.moveTo(100, 100);
 context.lineTo(600, 600);
 context.lineWidth = 5;
-context.strokeStyle = '#A1B2E2';
+context.strokeStyle = "#A1B2E2";
 
 // 上面两行就是状态的设置
 // 下面一行才是具体的绘制
@@ -85,3 +85,25 @@ context.fill();
 
 1. .fillStyle 属性设置的是填充内容的颜色，.fill() 就是完成填充色的操作（这里再回顾一遍上面的状态设置与具体绘制的区别，没有最后一行代码就是没有填充效果的）；
 2. 例子中给了四个点，其实我们只需要给定三个点就可以按照顺序连接，完成三角形的连接绘制填充，同样，第四个点如果给的无法构成四边形，仍旧会绘制三角形；
+
+##### 状态与覆盖 多个线段（图形）的绘制
+
+```javascript
+context.moveTo(100, 100);
+context.lineTo(600, 600);
+context.lineTo(100, 600);
+context.lineTo(100, 100);
+
+context.fillStyle = "red";
+context.lineWidth = 5;
+context.stroke();
+
+context.moveTo(200, 100);
+context.lineTo(700, 600);
+context.strokeStyle = "black";
+context.stroke();
+```
+
+这段代码的目的原本是绘制一个红色边框的三角形和一条黑色的斜线。**然后运行结果却都是黑色图形。**
+
+> 在第一次调用.stroke()处设置断点之后会发现，原本是先绘制了红色边框的三角形，然后执行到下一个.stroke()函数时，之前的红色三角也被重绘成了黑色，结果就是后来出现的画面。
