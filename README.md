@@ -134,4 +134,4 @@ context.stroke();
 ```
 多个路径分开处理的方式就是使用.beginPath()和.closePath()这俩个函数。
 
-> 七巧板Demo 在task01路径下[index.html]()
+> 七巧板Demo 在task01路径下[index.html](https://github.com/WitNesS23/Learn-Canvas/blob/master/task01/index.html)
