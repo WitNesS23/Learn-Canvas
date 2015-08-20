@@ -3,10 +3,47 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
-	<link rel="stylesheet" href="">
+	<title>TangramDemo</title>
 </head>
 <body>
-	
+	<canvas id="canvas"></canvas>
+	<script type="text/javascript">
+		var tangram = [
+			{part: [{x: 0, y: 0}, {x: 1, y: 0}, {x: 0.5, y: 0.5}], color: "#CAFF67"},
+			{part: [{x: 0, y: 0}, {x: 0.5, y: 0.5}, {x: 0, y: 1}], color: "#67BECF"},
+			{part: [{x: 1, y: 0}, {x: 1, y: 0.5}, {x: 0.75, y: 0.75}, {x: 0.75, y: 0.25}], color: "#EF3D61"},
+			{part: [{x: 0.75, y: 0.25}, {x: 0.75, y: 0.75}, {x: 0.5, y: 0.5}], color: "#F9F51A"},
+			{part: [{x: 0.5, y: 0.5}, {x: 0.75, y: 0.75}, {x: 0.5, y: 1}, {x: 0.25, y: 0.75}], color: "#A594C0"},
+			{part: [{x: 0.25, y: 0.75}, {x: 0.5, y: 1}, {x: 0, y: 1}], color: "#FA8ECC"},
+			{part: [{x: 1, y: 0.5}, {x: 1, y: 1}, {x: 0.5, y: 1}], color: "#F6CA29"},
+		];
+
+		window.onload = function(){
+			var canvas = document.getElementById('canvas');
+			var base = canvas.width = canvas.height = 600;
+
+			var context = canvas.getContext('2d');
+			for (var i = 0; i < tangram.length; i++) {
+				draw(i, context, base);
+			};
+		}
+
+		function draw(index, container, baseNum){
+			container.beginPath();
+
+			var _arrPoints = tangram[index].part;
+			container.moveTo(_arrPoints[0].x * baseNum, _arrPoints[0].y * baseNum);
+			for(e in _arrPoints){
+				if(e !== 0){
+					container.lineTo(_arrPoints[e].x * baseNum, _arrPoints[e].y * baseNum);
+				}
+			}
+			
+			container.closePath();
+
+			container.fillStyle = tangram[index].color;
+			container.fill();
+		}
+	</script>
 </body>
 </html>

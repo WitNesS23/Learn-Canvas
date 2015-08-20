@@ -106,4 +106,32 @@ context.stroke();
 
 这段代码的目的原本是绘制一个红色边框的三角形和一条黑色的斜线。**然后运行结果却都是黑色图形。**
 
-> 在第一次调用.stroke()处设置断点之后会发现，原本是先绘制了红色边框的三角形，然后执行到下一个.stroke()函数时，之前的红色三角也被重绘成了黑色，结果就是后来出现的画面。
+> 在第一次调用.stroke()处设置断点之后运行会发现，原本是先绘制了红色边框的三角形，然后执行到下一个.stroke()函数时，之前的红色三角形又被绘制了一遍，被覆盖成了黑色，结果就是后来出现的画面。同样值得注意的是，.lineWidth属性在绘制下一个线段的时候仍旧有作用。
+
+这里就又要强调，**canvas是基于状态进行绘制的**。上面的就是经典的错误。下面介绍下如何绘制两个状态不影响的图形（线段）。
+
+```javascript
+context.beginPath();
+context.moveTo(100, 100);
+context.lineTo(600, 600);
+context.lineTo(100, 600);
+context.lineTo(100, 100);
+context.closePath();
+
+// 上面的状态只会在下面的.stroke()函数起作用
+
+context.fillStyle = "red";
+context.lineWidth = 5;
+context.stroke();
+
+context.beginPath();
+context.moveTo(200, 100);
+context.lineTo(700, 600);
+context.closePath();
+
+context.strokeStyle = "black";
+context.stroke();
+```
+多个路径分开处理的方式就是使用.beginPath()和.closePath()这俩个函数。
+
+> 七巧板Demo 在task01路径下[index.html]()
