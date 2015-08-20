@@ -5,4 +5,6 @@
 
 ## 一、 认识Canvas
 > Canvas 对象表示一个 HTML 画布元素 - <canvas>。它没有自己的行为，但是定义了一个 API 支持脚本化客户端绘图操作。
-[W3C对 HTML DOM Canvas 对象的官方解释](http://www.w3school.com.cn/jsref/dom_obj_canvas.asp)
+
+- [W3C对 HTML DOM Canvas 对象的官方解释](http://www.w3school.com.cn/jsref/dom_obj_canvas.asp)
+- [W3C对 HTML5 <canvas> 标签的官方解释](http://www.w3school.com.cn/html5/html5_canvas.asp)
