@@ -136,4 +136,4 @@ context.stroke();
 
 > 七巧板Demo 源代码于[task01/index.html](https://github.com/WitNesS23/Learn-Canvas/blob/master/task01/index.html)
 
-> 效果图 ![效果图](http://7xi77s.com1.z0.glb.clouddn.com/微信截图_20150820185845.png)
+> ![效果图](http://7xi77s.com1.z0.glb.clouddn.com/微信截图_20150820185845.png)
