@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ClockDemo</title>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script type="text/javascript">
+	function init(){
+		clock();
+		setInterval(clock, 1000);
+	}
+
+	function clock(){
+		var now = new Date(); // 清空给定矩形
+
+		var canvas = document.getElementById('canvas');
+		canvas.width = 300;
+		canvas.height = 300;
+
+		var ctx = canvas.getContext('2d');
+		ctx.save();
+
+		ctx.clearRect(0, 0, 300, 300); // 清空给定矩形内的像素
+		ctx.translate(150, 150);  // 重新设置画布的坐标源点
+		ctx.lineCap = "round"; //圆形线头
+
+		// 绘制小时刻度
+		ctx.save();
+		for(var i = 0; i<12; i++){
+			ctx.beginPath();
+			ctx.rotate(Math.PI/6);
+			ctx.moveTo(135, 0);
+			ctx.lineTo(140, 0);
+			ctx.stroke();
+		}
+		ctx.restore();
+
+		// 绘制时钟的圆形外框
+		ctx.beginPath();
+		ctx.lineWidth = 8;
+		ctx.strokeStyle = '#325FA2';
+		ctx.arc(0, 0, 142, 0, Math.PI * 2, false);
+		ctx.stroke();
+
+		ctx.restore();
+	}
+
+	init();
+</script>
+</body>
+</html>
